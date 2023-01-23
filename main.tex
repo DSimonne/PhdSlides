@@ -4,30 +4,36 @@
 
 \usepackage[utf8]{inputenc} % to use accents in source code
 \usepackage[T1]{fontenc} % to use accents in output
+\usepackage{tgadventor}
+
+\usepackage{lmodern} % to avoid errors in font size
 \usepackage[british]{babel}
 \usepackage{mathtools}
 \usepackage{tikz} % Drawing
 \usetikzlibrary{shapes.geometric, arrows, positioning}
 \hypersetup{
-    %bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-    pdftoolbar=true,        % show Acrobat’s toolbar?
-    pdfmenubar=true,        % show Acrobat’s menu?
-    pdffitwindow=true,     % window fit to page when opened
-    pdfstartview={FitH},    % fits the width of the page to the window
-    pdftitle={PhD slides},    % title
-    pdfauthor={David Simonne},     % author
-    pdfsubject={Subject},   % subject of the document
-    pdfpagemode=FullScreen,
-    % pdfcreator={Creator},   % creator of the document
-    % pdfproducer={Producer}, % producer of the document
+    hyperindex=True,
+    bookmarksopen=true,
+    unicode=true,              % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,            % show Acrobat’s toolbar?
+    pdfmenubar=true,            % show Acrobat’s menu?
+    pdffitwindow=true,          % window fit to page when opened
+    pdfstartview={FitH},        % fits the width of the page to the window
+    pdftitle={Ammonia Oxidation probed by NAP X-ray diffraction techniques},
+    pdfauthor={David Simonne},  % author
+    pdfstartpage=61,
+    % pdfsubject={Subject},       % subject of the document
+    % pdfpagemode=FullScreen,
+    % pdfcreator={Creator},       % creator of the document
+    % pdfproducer={Producer},     % producer of the document
     % pdfkeywords={keyword1} {key2} {key3}, % list of keywords
-    % pdfnewwindow=true,      % links in new window
-    colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=DarkBlue,          % color of internal links
-    filecolor=DarkBlue,      % color of file links
-    citecolor=DarkBlue,        % color of links to bibliography
+    pdfnewwindow=false,         % links in new window
+    colorlinks=true,            % false: boxed links; true: colored links
+    linkcolor=DarkBlue,         % color of internal links
+    filecolor=DarkBlue,         % color of file links
     urlcolor=DarkBlue           % color of external links
+    citecolor=DarkBlue,         % color of links to bibliography
+    % urlstyle=same,
 }
 
 \usepackage[version=4]{mhchem}
@@ -35,19 +41,18 @@
 \usepackage{multirow}
 \usepackage{array}
 \usepackage[font=footnotesize,justification=centering]{caption}
-\usepackage{animate}
+\usepackage{animate} % for animations in 3D
 \usepackage{siunitx} % Units
 \DeclareSIUnit\angstrom{\text {Å}}
-\usepackage{gensymb}
+\usepackage{gensymb} % for degree symbol
 \usepackage{textcomp} % for arrows
 
 \usepackage{biblatex}
 \usepackage{csquotes}
 
 \usepackage{wasysym} % for diameter symbol
-\usepackage{animate}
 
-\addbibresource{references.bib}
+% \addbibresource{references.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -104,7 +109,7 @@
 \setbeamersize{text margin left=0cm, text margin right=0cm}
 
 %% Fonts
-\fontfamily{QTFuture}\selectfont
+% \fontfamily{QTFuture}\selectfont
 
 %% Headline & Footline
 \setbeamertemplate{headline}[text line]{
@@ -168,15 +173,16 @@
 
 \institute
 {
-  \inst{1}
-  Synchrotron SOLEIL
- \and
-  \inst{2}
-  Commissariat à l’énergie atomique et aux énergies alternatives – CEA Grenoble
- \and
-  \inst{3}
- ESRF -- The European Synchrotron 
-  % Ecole Doctorale Physique en Île-de-France (EDPIF) - Université Paris-Saclay
+    \inst{1}
+    Synchrotron SOLEIL
+    \and
+    \inst{2}
+    Commissariat à l’énergie atomique et aux énergies alternatives – CEA Grenoble
+    \and
+    \inst{3}
+    ESRF -- The European Synchrotron
+    % \and
+    % Ecole Doctorale Physique en Île-de-France (EDPIF) - Université Paris-Saclay
 }
 
 \date{\footnotesize{\today}}
@@ -215,13 +221,14 @@
 
     \section{Nitrogen fertilizers}
     \input{Slides/Introduction/fertilizer_use.tex}
-    % \input{Slides/Introduction/fertilizer_map.tex}
+    \input{Slides/Introduction/fertilizer_map.tex}
     \input{Slides/Introduction/motivation.tex}
     \input{Slides/Introduction/techniques.tex}
+    \input{Slides/Introduction/gaps.tex}
 
-    % \section{Literature review}
-    % \input{Slides/Literature/Pt100.tex}
-    % \input{Slides/Literature/Pt111.tex}
+    \section{Literature review}
+    \input{Slides/Literature/Pt100.tex}
+    \input{Slides/Literature/Pt111.tex}
     
 	\section{Experimental setup}
     \input{Slides/SixS/sample_environment.tex}
@@ -233,16 +240,20 @@
     \section{Gwaihir}
     \input{Slides/Gwaihir/phase_retrieval.tex}    
     \input{Slides/Gwaihir/workflow.tex}
+    \input{Slides/Gwaihir/software.tex}
+    \input{Slides/Gwaihir/software_pgm.tex}
 
     \section{Bragg Coherent Diffraction Imaging}
+    \input{Slides/BCDI_data/operando_bcdi.tex}
+    \input{Slides/BCDI_data/facet_retrieval.tex}
     \input{Slides/BCDI_data/particles_with_facets.tex}
     \input{Slides/BCDI_data/strain_field_energy.tex}
 
     \section{Surface X-ray Diffraction}
     % \input{Slides/SXRD_data/StructureFactor.tex}
     \input{Slides/SXRD_data/Structures.tex}
-    % \input{Slides/SXRD_data/PossibleStructures.tex}
-    % \input{Slides/SXRD_data/ArgonRT.tex}
+    \input{Slides/SXRD_data/PossibleStructures.tex}
+    \input{Slides/SXRD_data/ArgonRT.tex}
     \input{Slides/SXRD_data/ArgonBefore.tex}
     \input{Slides/SXRD_data/CondF1.tex}
     \input{Slides/SXRD_data/CondE1.tex}
@@ -251,23 +262,6 @@
     \input{Slides/SXRD_data/CondB.tex}
     \input{Slides/SXRD_data/CondA.tex}
     \input{Slides/SXRD_data/ArgonAfter.tex}
-
-    \section{Conclusion}
-    % \input{Slides/references.tex}
-    \input{Slides/conclusions.tex}
-    % \input{Slides/scientific_output.tex}
-    \input{Slides/end_frame.tex}
-
-    %%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%%%%
-\appendix
-    \input{Slides/Introduction/gaps.tex}
-    
-    \input{Slides/Gwaihir/software.tex}
-    \input{Slides/Gwaihir/software_pgm.tex}
-
-    \input{Slides/BCDI_data/facet_retrieval.tex}
-    \input{Slides/BCDI_data/operando_bcdi.tex}
-
     \input{Slides/SXRD_data/CondG.tex}
     \input{Slides/SXRD_data/CTR.tex}
 
@@ -277,6 +271,15 @@
     \input{Slides/XPS_data/N1s.tex}
     \input{Slides/XPS_data/O1s.tex}
 
+    \section{Conclusion}
+    % \input{Slides/references.tex}
+    \input{Slides/conclusions.tex}
+    % \input{Slides/scientific_output.tex}
+    \input{Slides/end_frame.tex}
+
+    %%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%%%%
+\appendix
+    
     % add RGA
     % add rod simulations
     
