@@ -1,0 +1,283 @@
+\documentclass[xcolor=table, t, 9pt, head=0cm]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[utf8]{inputenc} % to use accents in source code
+\usepackage[T1]{fontenc} % to use accents in output
+\usepackage[british]{babel}
+\usepackage{mathtools}
+\usepackage{tikz} % Drawing
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+\hypersetup{
+    %bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=true,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={PhD slides},    % title
+    pdfauthor={David Simonne},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfpagemode=FullScreen,
+    % pdfcreator={Creator},   % creator of the document
+    % pdfproducer={Producer}, % producer of the document
+    % pdfkeywords={keyword1} {key2} {key3}, % list of keywords
+    % pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=DarkBlue,          % color of internal links
+    filecolor=DarkBlue,      % color of file links
+    citecolor=DarkBlue,        % color of links to bibliography
+    urlcolor=DarkBlue           % color of external links
+}
+
+\usepackage[version=4]{mhchem}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[font=footnotesize,justification=centering]{caption}
+\usepackage{animate}
+\usepackage{siunitx} % Units
+\DeclareSIUnit\angstrom{\text {Å}}
+\usepackage{gensymb}
+\usepackage{textcomp} % for arrows
+
+\usepackage{biblatex}
+\usepackage{csquotes}
+
+\usepackage{wasysym} % for diameter symbol
+\usepackage{animate}
+
+\addbibresource{references.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\argon}{{\textcolor{ArgonColor}{\ce{Ar}\,}}}
+\newcommand{\ammonia}{{\textcolor{AmmoniaColor}{\ce{NH_3}\,}}}
+\newcommand{\nitrousoxide}{{\textcolor{NitrousOxideColor}{\ce{N_2O}\,}}}
+\newcommand{\water}{{\textcolor{WaterColor}{\ce{H_2O}\,}}}
+\newcommand{\nitrogen}{{\textcolor{NitrogenColor}{\ce{N_2}\,}}}
+\newcommand{\nitricacid}{{\textcolor{DarkOrange}{\ce{HNO_3}\,}}}
+\newcommand{\nitricoxide}{{\textcolor{NitrogenOxideColor}{\ce{NO}\,}}}
+\newcommand{\dioxygen}{{\textcolor{OxygenColor}{\ce{O_2}\,}}}
+\newcommand{\ptthreeofour}{{\textcolor{Important}{Pt$_3$O$_4$\,}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Colours %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{ArgonColor}{HTML}{008FD5}
+\definecolor{AmmoniaColor}{HTML}{DD65B0}
+\definecolor{OxygenColor}{HTML}{FC4F30}
+\definecolor{NitrogenColor}{HTML}{810F7C}
+\definecolor{NitrousOxideColor}{HTML}{8B8B8B}
+\definecolor{NitrogenOxideColor}{HTML}{6D904F}
+\definecolor{WaterColor}{HTML}{E5AE38}
+
+\definecolor{Ostwald}{HTML}{800080}
+\definecolor{Haber}{HTML}{158466}
+
+\definecolor{LightBlue}{RGB}{30,75,180}
+\definecolor{LUBlue}{RGB}{0,0,128}
+\definecolor{LUGrey}{RGB}{77,76,68}
+\definecolor{Prune}{RGB}{99,0,60}
+\definecolor{Important}{HTML}{980000}
+
+\definecolor{DarkFern}{HTML}{407428}
+\definecolor{DarkCharcoal}{HTML}{4D4944}
+\definecolor{DarkBlue}{HTML}{23373B}
+\definecolor{DarkOrange}{HTML}{EA7500}
+\definecolor{LightOrange}{HTML}{F9D6B3}
+\definecolor{Blue}{HTML}{13406a}
+
+\colorlet{lightblue}{blue!60}
+\colorlet{lightorange}{orange!60}
+\colorlet{lightgreen}{green!60}
+\colorlet{lightred}{red!60}
+\colorlet{lightgray}{gray!60}
+\colorlet{lightbrown}{brown!60}
+\colorlet{lightpink}{pink!60}
+\colorlet{lightviolet}{violet!60}
+
+\colorlet{shadecolor}{gray!40}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Theme %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Geometry
+\setbeamersize{text margin left=0cm, text margin right=0cm}
+
+%% Fonts
+\fontfamily{QTFuture}\selectfont
+
+%% Headline & Footline
+\setbeamertemplate{headline}[text line]{
+}
+
+\setbeamertemplate{footline}[text line]{
+    \scriptsize{\strut
+        \insertsection
+        \hfill
+        \insertframenumber
+        \strut
+    }
+}
+\setbeamercolor{footline}{fg=DarkBlue}
+
+%% Title frame
+\setbeamercolor{title}{fg=Important}
+\setbeamercolor{author}{fg=Blue}
+\setbeamercolor{institute}{fg=Blue}
+\setbeamercolor{date}{fg=Blue}
+
+%% Frame titles
+\setbeamercolor{frametitle}{fg=white, bg=DarkBlue}
+\setbeamerfont{frametitle}{size={\fontsize{18}{24}}}
+\addtobeamertemplate{frametitle}{}{\vspace{-0.4cm}} % decrease
+
+%% Sections
+\setbeamercolor{section}{fg=Blue}
+\setbeamercolor{subsection}{fg=Blue}
+\setbeamercolor{section in toc}{fg=Important}
+\setbeamercolor{subsection in toc}{fg=Blue}
+
+%% Captions
+\setbeamercolor{caption name}{fg=Prune}
+
+%% Lists
+\setbeamertemplate{itemize item}[circle] % default, triangle, circle, square & ball
+\setbeamercolor{itemize item}{fg=DarkBlue}
+\setbeamertemplate{itemize subitem}[circle] 
+\setbeamercolor{itemize subitem}{fg=DarkBlue}
+\setbeamertemplate{itemize subsubitem}[circle] 
+\setbeamercolor{itemize subsubitem}{fg=DarkBlue}
+
+\setbeamercolor{enumerate item}{fg=DarkBlue}
+\setbeamercolor{enumerate subitem}{fg=DarkBlue}
+\setbeamercolor{enumerate subsubitem}{fg=DarkBlue}
+
+%% Blocks
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\title[Main Title]
+{   
+    Catalytic properties at the nanoscale probed by surface X-ray diffraction and coherent diffraction imaging
+}
+
+\author
+{D. Simonne\inst{1, 2},\and A. Coati\inst{1},\and M.-I. Richard \inst{2, 3},\and M. Dupraz\inst{2, 3},\and C. Chatelier\inst{2, 3},\and A. Vlad \inst{1},\and Y. Garreau\inst{1},\and B. Voisin\inst{1},\and A. Resta\inst{1}}
+
+\institute
+{
+  \inst{1}
+  Synchrotron SOLEIL
+ \and
+  \inst{2}
+  Commissariat à l’énergie atomique et aux énergies alternatives – CEA Grenoble
+ \and
+  \inst{3}
+ ESRF -- The European Synchrotron 
+  % Ecole Doctorale Physique en Île-de-France (EDPIF) - Université Paris-Saclay
+}
+
+\date{\footnotesize{\today}}
+
+\titlegraphic{
+    \vspace{0.5cm}
+    \centering
+    \hspace{0.7cm}
+    \includegraphics[height=1.2cm]{Figures/logo/SOLEIL.png}\hspace{0.5cm}
+    \includegraphics[height=1.2cm]{Figures/logo/CEA.png}\hspace{0.5cm}
+    %\includegraphics[height=1.2cm]{Figures/logo/ParisSaclayBlanc.png}\\
+}
+
+%\logo{\includegraphics[height=0.7cm]{Figures/logo/EDPIF.png}\vspace{-0.5cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Navigation symbols %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{navigation symbols}{}
+
+% \setbeamertemplate{navigation symbols}{%
+% 	\insertslidenavigationsymbol % Icône slide
+% 	\insertframenavigationsymbol % Icône frame
+% 	\insertsubsectionnavigationsymbol % Icône sous section
+% 	\insertsectionnavigationsymbol % Icône section
+% 	\insertdocnavigationsymbol % Icône docnavigation
+% 	\insertbackfindforwardnavigationsymbol % Icône backfindforward
+% }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+
+    \section{Nitrogen fertilizers}
+    \input{Slides/Introduction/fertilizer_use.tex}
+    % \input{Slides/Introduction/fertilizer_map.tex}
+    \input{Slides/Introduction/motivation.tex}
+    \input{Slides/Introduction/techniques.tex}
+
+    % \section{Literature review}
+    % \input{Slides/Literature/Pt100.tex}
+    % \input{Slides/Literature/Pt111.tex}
+    
+	\section{Experimental setup}
+    \input{Slides/SixS/sample_environment.tex}
+    \input{Slides/SixS/conditions.tex}
+    \input{Slides/SixS/why_bcdi.tex}
+    \input{Slides/SixS/sample.tex}
+    \input{Slides/SixS/3d_patterns.tex}
+
+    \section{Gwaihir}
+    \input{Slides/Gwaihir/phase_retrieval.tex}    
+    \input{Slides/Gwaihir/workflow.tex}
+
+    \section{Bragg Coherent Diffraction Imaging}
+    \input{Slides/BCDI_data/particles_with_facets.tex}
+    \input{Slides/BCDI_data/strain_field_energy.tex}
+
+    \section{Surface X-ray Diffraction}
+    % \input{Slides/SXRD_data/StructureFactor.tex}
+    \input{Slides/SXRD_data/Structures.tex}
+    % \input{Slides/SXRD_data/PossibleStructures.tex}
+    % \input{Slides/SXRD_data/ArgonRT.tex}
+    \input{Slides/SXRD_data/ArgonBefore.tex}
+    \input{Slides/SXRD_data/CondF1.tex}
+    \input{Slides/SXRD_data/CondE1.tex}
+    \input{Slides/SXRD_data/CondF2.tex}
+    \input{Slides/SXRD_data/CondE2.tex}
+    \input{Slides/SXRD_data/CondB.tex}
+    \input{Slides/SXRD_data/CondA.tex}
+    \input{Slides/SXRD_data/ArgonAfter.tex}
+
+    \section{Conclusion}
+    % \input{Slides/references.tex}
+    \input{Slides/conclusions.tex}
+    % \input{Slides/scientific_output.tex}
+    \input{Slides/end_frame.tex}
+
+    %%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%%%%
+\appendix
+    \input{Slides/Introduction/gaps.tex}
+    
+    \input{Slides/Gwaihir/software.tex}
+    \input{Slides/Gwaihir/software_pgm.tex}
+
+    \input{Slides/BCDI_data/facet_retrieval.tex}
+    \input{Slides/BCDI_data/operando_bcdi.tex}
+
+    \input{Slides/SXRD_data/CondG.tex}
+    \input{Slides/SXRD_data/CTR.tex}
+
+    \section{X-ray Photoelectron Spectroscopy}
+    \input{Slides/XPS_data/Presentation.tex}
+    \input{Slides/XPS_data/Pt4f.tex}
+    \input{Slides/XPS_data/N1s.tex}
+    \input{Slides/XPS_data/O1s.tex}
+
+    % add RGA
+    % add rod simulations
+    
+\end{document}
